@@ -1,2 +1,0 @@
-"set colorscheme
-colorscheme dracula
