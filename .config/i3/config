@@ -36,8 +36,8 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 10%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 10%-
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -188,16 +188,18 @@ bar {
         i3bar_command i3bar --transparency
         colors{
             background #00000000
-        }
-        font pango:SauceCodePro Nerd Font 10
+        } font pango:SauceCodePro Nerd Font Mono 10
         status_command ~/.config/bumblebee-status/bumblebee-status \
-    -t onedark-powerline \
-    -m git memory datetime battery-upower bluetooth2
+    -m pulseout git memory datetime battery-upower bluetooth2 \
+    -p pulseout.limit=100% \
+    -t onedark-powerline 
 }
-
+#execute program for background
 exec_always nitrogen --restore
+#execute program for blur and transparency
 exec_always picom --experimental-backends -b
 
+#remove boarder
 default_border none
 default_floating_border none
 
