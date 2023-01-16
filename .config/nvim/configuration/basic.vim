@@ -34,4 +34,13 @@ nnoremap <C-t> :cd %:p:h <CR> :spl <CR> <C-w>j <CR> :resize 15  <CR> :term<CR>
 
 "nnoremap <F8> :w <CR> :! gcc %:t <CR> :vspl <CR> <C-w>l <CR> :vertical resize 70  <bar> :term<CR> i <CR> ./a.out <CR> 
 
-"no padding to the windows
+"transparent background
+augroup user_colors
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+augroup END
+
+"colorscheme
+syntax on
+
+colorscheme onedark

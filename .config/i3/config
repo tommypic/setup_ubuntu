@@ -45,7 +45,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -150,7 +150,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec  --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -188,19 +188,25 @@ bar {
         i3bar_command i3bar --transparency
         colors{
             background #00000000
-        } font pango:SauceCodePro Nerd Font Mono 10
+        } font pango:SauceCodePro Nerd Font Mono 11
         status_command ~/.config/bumblebee-status/bumblebee-status \
-    -m pulseout git memory datetime battery-upower bluetooth2 \
-    -p pulseout.limit=100% \
+    -m playerctl pulseout memory datetime battery-upower bluetooth2 \
+    -p pulseout.limit=100% / playerctl.layout=playerctl.song,playerctl.prev,playerctl.pause,playerctl.next playerctl.format='{{artist}} - {{title}}' playerctl.args='-p spotify,%any' \
     -t onedark-powerline 
 }
 #execute program for background
-exec_always nitrogen --restore
+exec_always  --no-startup-id nitrogen --restore
 #execute program for blur and transparency
-exec_always picom --experimental-backends -b
+exec_always  --no-startup-id picom --experimental-backends -b
 
 #remove boarder
 default_border none
 default_floating_border none
-
 hide_edge_borders both
+
+#brightness command
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
+bindsym XF86MonBrightnessUp exec --no-startup-id exec light -A 5
+
+
+
