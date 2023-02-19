@@ -1,0 +1,4 @@
+{
+//snippets
+"snippets.userSnippetsDirectory": "~/.config/nvim/snips"
+}
