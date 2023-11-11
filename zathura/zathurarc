@@ -55,5 +55,6 @@ set recolor-darkcolor           "#f8f8f2" # Foreground
 set adjust-open width
 set recolor true
 
-#delete gui
-set guioptions none
+#mapping bookmark
+map b focus_inputbar ":blist "
+map <C-b>  focus_inputbar ":bmark "

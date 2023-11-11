@@ -202,6 +202,16 @@ set $base0C #56b6c2
 set $base0D #61afef
 set $base0E #c678dd
 set $base0F #be5046
+
+#remove boarder
+default_border pixel 5
+default_floating_border pixel 5
+
+#gaps
+gaps inner 20
+gaps outer 0
+smart_gaps on 
+
 bar {
         status_command i3status
         tray_output none
@@ -223,7 +233,7 @@ bar {
 
         #bumblebee
         status_command ~/.config/bumblebee-status/bumblebee-status \
-    -m playerctl pulseout memory datetime battery-upower bluetooth2 \
+    -m xrandr memory datetime battery-upower bluetooth2 \
     -p pulseout.limit=100% / playerctl.layout=playerctl.song,playerctl.prev,playerctl.pause,playerctl.next playerctl.format='{{artist}} - {{title}}' playerctl.args='-p spotify,%any' \
     -t onedark-powerline 
 }
@@ -232,9 +242,6 @@ exec_always  --no-startup-id nitrogen --restore
 #execute program for blur and transparency
 exec_always  --no-startup-id picom --experimental-backends -b
 
-#remove boarder
-default_border none
-default_floating_border none
 
 #brightness command
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
@@ -248,6 +255,7 @@ for_window [class="dropdown"] border pixel 5
 bindsym $mod+t [class="dropdown"] scratchpad show, [class="dropdown"] move position center
 #restarting i3 will not launch another scratchpad if it is already running anotherone
 exec_always --no-startup-id pgrep -f '^alacritty --class dropdown' || alacritty --class dropdown
+ 
 
 
 
