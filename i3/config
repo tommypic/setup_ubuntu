@@ -111,6 +111,11 @@ bindsym $mod+a focus parent
 #start chromium
 bindsym $mod+c  exec --no-startup-id chromium
 
+#start ranger
+bindsym $mod+m  exec --no-startup-id alacritty -e ranger
+
+# start nvim 
+bindsym $mod+n  exec --no-startup-id alacritty -e nvim
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -204,43 +209,17 @@ set $base0E #c678dd
 set $base0F #be5046
 
 #remove boarder
-default_border pixel 5
-default_floating_border pixel 5
+default_border pixel 1
+default_floating_border pixel 1
 
 #gaps
-gaps inner 20
+gaps inner 10
 gaps outer 0
 smart_gaps on 
 
-bar {
-        status_command i3status
-        tray_output none
-        position top
-        i3bar_command i3bar --transparency
-        colors{    
-        background $base00
-
-        # State             Border  BG      Text
-        focused_workspace   $base05 $base0D $base00
-        active_workspace    $base05 $base03 $base00
-        inactive_workspace  $base03 $base01 $base05
-        urgent_workspace    $base08 $base08 $base00
-        binding_mode        $base00 $base0A $base00
-        }
-
-        #font
-        font pango:Source Code Pro for Powerline 11
-
-        #bumblebee
-        status_command ~/.config/bumblebee-status/bumblebee-status \
-    -m xrandr memory datetime battery-upower bluetooth2 \
-    -p pulseout.limit=100% / playerctl.layout=playerctl.song,playerctl.prev,playerctl.pause,playerctl.next playerctl.format='{{artist}} - {{title}}' playerctl.args='-p spotify,%any' \
-    -t onedark-powerline 
-}
-#execute program for background
-exec_always  --no-startup-id nitrogen --restore
-#execute program for blur and transparency
-exec_always  --no-startup-id picom --experimental-backends -b
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#transparency
+# exec_always  --no-startup-id picom -b
 
 
 #brightness command
@@ -251,7 +230,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id exec light -A 5
 for_window [class="dropdown"] floating enable
 for_window [class="dropdown"] resize set 800 300
 for_window [class="dropdown"] move scratchpad
-for_window [class="dropdown"] border pixel 5
+for_window [class="dropdown"] border pixel 1
 bindsym $mod+t [class="dropdown"] scratchpad show, [class="dropdown"] move position center
 #restarting i3 will not launch another scratchpad if it is already running anotherone
 exec_always --no-startup-id pgrep -f '^alacritty --class dropdown' || alacritty --class dropdown
