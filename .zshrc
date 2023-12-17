@@ -44,8 +44,6 @@ alias n="nvim"
 alias r="ranger"
 #alias for quit
 alias q="exit"
-#alias for spotifyd
-alias music="~/spotifyd/target/release/spotifyd --no-daemon"
 
 setxkbmap -option "crtl:swapcaps"
 
