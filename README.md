@@ -9,6 +9,11 @@ remember to install also
 and to enable the bluethooth systemctl
 ```BASH
 systemctl enable bluetooth.service
-
 ```
 
+## PwnDbg
+to set PwnDbg as debugger when using gdb type 
+```BASH
+echo 'source /usr/share/pwndbg/gdbinit.py' >> ~/.gdbinit
+
+```
