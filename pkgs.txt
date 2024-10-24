@@ -39,6 +39,7 @@ screenkey
 smartmontools
 sof-firmware
 ttf-sourcecodepro-nerd
+unzip
 valgrind
 vim
 vlc
