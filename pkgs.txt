@@ -24,14 +24,11 @@ neofetch
 neovim
 network-manager-applet
 networkmanager
-npm
-openjdk-src
 pavucontrol
 pulseaudio
 pulseaudio-bluetooth
 pwndbg
 python-pip
-python-pwntools
 ranger
 ripgrep
 rofi
