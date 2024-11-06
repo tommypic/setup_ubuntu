@@ -59,7 +59,7 @@ border_left=0
 command=free --giga | awk 'FNR==2{ printf "%i<span color=\"#ff79c6\">GiB</span>\n", $7 }'
 interval=2
 label=<span color="#ff79c6"> </span>
-border=#ff79c6
+border=#ff79c6 
 border_top=1
 border_right=0
 border_bottom=0
@@ -85,8 +85,9 @@ border_right=0
 border_bottom=0
 border_left=0
 
+
 [date]
-command=LC_ALL="zh_CN.UTF-8" date '+%Y 年 %B %d 日 %A。' | awk '{ printf "%s<span color=\"#ff5555\">%s%s</span>%s<span color=\"#ff5555\">%s %s</span>\n", $1, $2, $3, $4, $5, $6 }'
+command=LC_ALL="zh_CN.UTF-8" date '+%Y %B %d %A' | awk '{ printf "%s<span color=\"#ff5555\"> %s %s %s</span>\n", $1, $2, $3, $4 }'
 interval=60
 label=<span color="#ff5555"> </span>
 border=#ff5555
