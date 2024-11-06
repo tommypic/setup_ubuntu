@@ -24,6 +24,7 @@ neofetch
 neovim
 network-manager-applet
 networkmanager
+pacman-contrib
 pavucontrol
 pulseaudio
 pulseaudio-bluetooth
@@ -47,3 +48,4 @@ xterm
 zathura
 zathura-pdf-mupdf
 zsh
+
